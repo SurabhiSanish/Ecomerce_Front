@@ -1,0 +1,51 @@
+E commerce Front End
+
+1 create an angular project -ng new cart
+2 Run angulatr - ng s -o  or ng serve --open
+3 Add bootstrap,font awsome cdn (first link copy) in index.html 
+4 Add googlefonts in style.css(@import....)
+5 app.component.html completely remove
+6 Lazy Loding - lazy loading is used for fast accessing or loading of products like flipcart amazone etc.. 
+     
+     -->ng g m products --route products --module app.module
+
+7 app.component.html -Add <router-outlet></router-outlet>
+8 create components should lazy loaded in the product module
+     -->All-product  - ng g c products/all-products
+     -->cart         -ng g c products/cart
+     -->WishList     -ng g c products/wish-list
+
+9 set up path for each components inside product.routing.module.ts and app-routing.module.ts  file 
+10 create page not found component  -ng g c page-not-found
+11 create header and footer
+     --ng g c header
+     --ng g c footer
+
+12 All components designing 
+13 Backend Integration
+14 Angular service component create (we need it inside the products component)
+    ..> ng g s products/api  (here we are using api call so we named it api )
+
+15 import HttpClientModule in product.module.ts
+16 dependancy inject 
+    we use dependancy injection metod to connect the api.service and HttpClientModule
+
+17 search concept
+   --> ng g p products/pipes/filter
+
+18 WishList ( for wish list we need to add another collection in database)
+   --> open api.service
+         add addtowishlist(product:any)
+   --> all-product.component.html
+         change the wishlist a tag to button and add (click) event
+   --> open all product.component.ts
+         give the defnition to  addtowishlist(product:any)
+             Here the alert is comes from server to client  
+
+19 next open backend
+
+        
+
+           
+
+

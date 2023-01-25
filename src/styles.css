@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,300;0,400;0,800;1,300&family=Bebas+Neue&family=East+Sea+Dokdo&family=Lobster&family=Moon+Dance&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Sevillana&family=Seymour+One&display=swap');
+
+body{
+    font-family:  'Anybody', cursive;
+}
+.card-img-top{
+    width: 200px;
+    height: 200px;
+    transition: 0.5s;
+}
+.card-img-top:hover{
+    /* scale: 1.25; */
+    transform: scale(1.25);
+    transition: 0.5s;
+}
+
+.navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;   
+    
+}
+.p1{
+    margin-top: 150px;
+}
+

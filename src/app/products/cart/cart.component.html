@@ -1,0 +1,94 @@
+<!-- cart with Empty content -->
+<div class="p1 ">
+    <div class="container border border-primary m-5 p-5" *ngIf="cartitems.length ==0">
+    <div class="row text-center">
+        <div class="col">
+            <img src="https://www.clickbazar.com/Images/empty-cart.gif" width="200px" height="200px">
+            <h3 class="mt-3">Your Cart is empty</h3>
+            <button routerLink="/" class="btn btn-primary">Shop Now</button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- Cart with content -->
+<div class="p1" >
+<div class="container" *ngIf="cartitems.length != 0"  >
+    <div class="row">
+        <div class="col">
+            <table class="table border m-5 border-dark">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of cartitems let i=index" > <!-- i=index is used to generate index number --> 
+                        <td>{{i+1}}</td>
+                        <td>{{product.title}}</td>
+                        <td><img [src]="product.image" width="100px" ></td>
+                        <td>{{product.description}}</td>
+                        <td>${{product.price}}</td>
+                        <td><i (click)="removeitem(product)" class="fa fa-trash text-danger"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="float: right; " class="mb-3">
+                <button (click)="removeall()" class="btn btn-danger">Empty Cart</button>&nbsp;
+                <button class="btn btn-warning" routerLink="/">View More</button>&nbsp;
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Check Out</button>
+                <b for="">Grand Total:${{grand}}</b>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Check out page</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h2><b>Delivery Address</b> </h2>
+          <form action="" class="form-control p-3 m-3 border border-primary">
+          <input type="text" class="form-control" placeholder="Name"><br>
+          <input type="text" class="form-control" placeholder="Address/House No "><br>
+          <input type="text" class="form-control" placeholder="Pincode"><br>
+          <input type="text" class="form-control" placeholder="State"><br>
+          <input type="text" class="form-control" placeholder="Country"><br>
+          <input type="text" class="form-control" placeholder="Contact Number"><br>
+          <input type="text" class="form-control" placeholder="Email Address"><br>
+        </form>
+
+        <div [ngSwitch]="grand">
+            <h4>Discounts</h4>
+            <img *ngSwitchCase="3" (click)="discount3per()" src="https://t4.ftcdn.net/jpg/00/98/97/57/360_F_98975745_sgSVAhoA5L8DgfEgoamIEZcKh0J6aBNI.jpg" alt="" width="75px" height="75px">
+            <img *ngSwitchCase="10" (click)="discount10per()" src="data:image/jpeg;base64,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" alt="" width="75px" height="75px">
+            <img *ngSwitchCase="30" (click)="discount30per()" src="https://media.istockphoto.com/id/1258110010/vector/30-percent-off-sale-discount-banner-discount-offer-price-tag-30-percent-discount-promotion.jpg?s=1024x1024&w=is&k=20&c=rWqQj7Ty6F-JSgeNdIpiYpMgHyj8Or5p-wFaMFYys48=" alt="" width="75px" height="75px">
+            <img *ngSwitchCase="50" (click)="discount50per()" src="https://e7.pngegg.com/pngimages/90/332/png-clipart-london-discounts-and-allowances-coupon-50-off-s-text-service.png" alt="" width="75px" height="75px">
+            <img *ngSwitchDefault="3" (click)="discount3per()" src="https://media.istockphoto.com/id/1136155337/vector/promo-code-coupon-code-flat-vector-set-design-illustration-on-white-background.jpg?s=612x612&w=0&k=20&c=sM95EWp2rPqPfp0pGxKi4Jkjgz-0buvGtSSZkNQYIao=" alt="" width="75px" height="75px">
+
+        </div>
+
+        <div>
+            <h5>Your grand Total is here :{{updatetotal}}</h5>
+        </div>
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="proceed()" class="btn btn-primary" data-bs-dismiss="modal">Proceed</button>
+        </div>
+      </div>
+    </div>
+  </div>
